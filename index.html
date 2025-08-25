@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Fencing Solutions - Your Trusted Fence Experts</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-green: #2d5016;
+        --accent-green: #4a7c28;
+        --warm-brown: #8b6f47;
+        --light-wood: #d4a574;
+        --dark-gray: #2c2c2c;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+        --shadow: rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-gray);
+        overflow-x: hidden;
+      }
+
+      /* Modern Fence Background Pattern */
+      .fence-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        z-index: -1;
+        background-image: repeating-linear-gradient(
+            90deg,
+            var(--primary-green) 0px,
+            var(--primary-green) 2px,
+            transparent 2px,
+            transparent 40px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            var(--primary-green) 0px,
+            var(--primary-green) 2px,
+            transparent 2px,
+            transparent 40px
+          );
+        animation: drift 20s linear infinite;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(40px);
+        }
+      }
+
+      /* Navigation */
+      nav {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green) 0%,
+          var(--accent-green) 100%
+        );
+        padding: 1rem 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--white);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo::before {
+        content: "⚒";
+        font-size: 2rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 5px 10px;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--light-wood);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 70px;
+        min-height: 90vh;
+        background: linear-gradient(
+            135deg,
+            rgba(45, 80, 22, 0.9),
+            rgba(74, 124, 40, 0.8)
+          ),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23d4a574" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        animation: slideUp 1s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        color: var(--white);
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        color: var(--light-gray);
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(
+          135deg,
+          var(--warm-brown),
+          var(--light-wood)
+        );
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+      }
+
+      /* Services Section */
+      .services {
+        padding: 80px 5%;
+        background: var(--light-gray);
+      }
+
+      .services h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--primary-green);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .services h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--warm-brown);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px var(--shadow);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-green),
+          var(--accent-green)
+        );
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(45, 80, 22, 0.2);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        color: var(--primary-green);
+        margin-bottom: 1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 5%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--accent-green)
+        );
+        position: relative;
+      }
+
+      .contact::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="0" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="10" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="20" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="30" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="40" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="50" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="60" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="70" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="80" y="0" width="2" height="100" fill="white" opacity="0.05"/><rect x="90" y="0" width="2" height="100" fill="white" opacity="0.05"/></svg>');
+        background-size: 100px 100px;
+      }
+
+      .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--white);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--primary-green);
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--primary-green);
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: var(--white);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--accent-green);
+        box-shadow: 0 0 0 3px rgba(74, 124, 40, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--warm-brown),
+          var(--light-wood)
+        );
+        color: var(--white);
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn::after {
+        content: "→";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+      }
+
+      .submit-btn:hover::after {
+        transform: translateY(-50%) translateX(5px);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(212, 165, 116, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-gray);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      /* Floating elements animation */
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fence-pattern"></div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <a href="#" class="logo">FencePro</a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1 class="floating">Build Your Perfect Fence</h1>
+        <p>
+          Professional fencing solutions that combine beauty, security, and
+          lasting quality for your property
+        </p>
+        <a href="#contact" class="cta-button">Get Free Quote Today</a>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <h2>Our Premium Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏡</div>
+          <h3>Residential Fencing</h3>
+          <p>
+            Transform your home with our stunning residential fence designs.
+            From classic picket to modern horizontal slat styles.
+          </p>
+          <a
+            href="#contact"
+            class="cta-button"
+            style="padding: 10px 20px; font-size: 1rem"
+            >Get Started</a
+          >
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Commercial Solutions</h3>
+          <p>
+            Secure your business property with our durable commercial fencing
+            options. Built to last and impress.
+          </p>
+          <a
+            href="#contact"
+            class="cta-button"
+            style="padding: 10px 20px; font-size: 1rem"
+            >Learn More</a
+          >
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛠️</div>
+          <h3>Custom Design</h3>
+          <p>
+            Your vision, our expertise. We create completely custom fence
+            designs tailored to your specific needs.
+          </p>
+          <a
+            href="#contact"
+            class="cta-button"
+            style="padding: 10px 20px; font-size: 1rem"
+            >Design Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <h2>Request Your Free Quote</h2>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Property Address *</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Street Address, City, State, ZIP"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="timeline">Project Timeline *</label>
+              <select id="timeline" name="timeline" required>
+                <option value="">Select Timeline</option>
+                <option value="asap">As Soon As Possible</option>
+                <option value="1week">Within 1 Week</option>
+                <option value="2weeks">Within 2 Weeks</option>
+                <option value="1month">Within 1 Month</option>
+                <option value="2months">Within 2 Months</option>
+                <option value="planning">Just Planning</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fence-type">Fence Type</label>
+              <select id="fence-type" name="fence-type">
+                <option value="">Select Type</option>
+                <option value="wood">Wood</option>
+                <option value="vinyl">Vinyl</option>
+                <option value="chain-link">Chain Link</option>
+                <option value="aluminum">Aluminum</option>
+                <option value="composite">Composite</option>
+                <option value="other">Other/Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Additional Details</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Tell us about your project..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send My Request</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2024 FencePro. All rights reserved. | Building Quality Fences
+        Since 2024
+      </p>
+    </footer>
+
+    <script>
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Collect form data
+          const formData = {
+            name: document.getElementById("name").value,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value,
+            address: document.getElementById("address").value,
+            timeline: document.getElementById("timeline").value,
+            fenceType: document.getElementById("fence-type").value,
+            message: document.getElementById("message").value,
+          };
+
+          // Here you would normally send the data to a server
+          console.log("Form submitted:", formData);
+
+          // Show success message
+          alert(
+            "Thank you for your request! We'll contact you within 24 hours with your free quote."
+          );
+
+          // Reset form
+          this.reset();
+        });
+
+      // Add scroll effect to navigation
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          nav.style.background =
+            "linear-gradient(135deg, rgba(45, 80, 22, 0.95) 0%, rgba(74, 124, 40, 0.95) 100%)";
+        } else {
+          nav.style.background =
+            "linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%)";
+        }
+      });
+
+      // Animate elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = "slideUp 1s ease forwards";
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".service-card").forEach((card) => {
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>
